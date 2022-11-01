@@ -13,19 +13,6 @@ module.exports = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, secret);
-    /*
-      A variável decoded será um objeto equivalente ao seguinte:
-      {
-        data: {
-            id:
-            displayName:
-            email:
-            image:
-        },
-        iat: 1656616422,
-        exp: 1657221222
-      }
-    */
     req.userId = decoded.data.id;
     next();
   } catch (err) {
